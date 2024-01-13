@@ -13,6 +13,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - run: |
+          git config --global user.email "nolan@nhlabs.org"
+          git config --global user.name "Nolan Heimlich"
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
@@ -31,4 +35,3 @@ jobs:
           gh-pages -d _site
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
