@@ -10,28 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - run: |
-          git config --global user.email "nolan@nhlabs.org"
-          git config --global user.name "Nolan Heimlich"
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - name: Setup Node.js Current
+        uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: current
 
       - name: Install Dependencies
-        run: npm install
-
-      - name: Build Eleventy Site
-        run: npx @11ty/eleventy
-
-      - name: Deploy to GitHub Pages
         run: |
-          npm install -g gh-pages
-          npx eleventy
-          gh-pages -d _site
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          npm ci
+          npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.8.0
+        with:
+          publish_dir: ./public
+          github_token: ${{ secrets.GITHUB_TOKEN }}
