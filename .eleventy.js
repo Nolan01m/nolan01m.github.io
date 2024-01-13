@@ -1,5 +1,5 @@
 module.exports = function (eleventyConfig) {
-  // Return your Object options:
+  eleventyConfig.addPassthroughCopy("src/css/*");
   return {
     dir: {
       input: "src",
