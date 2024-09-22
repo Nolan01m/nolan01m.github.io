@@ -1,4 +1,7 @@
 # nheimlich.github.io
 
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+### Local Development
+
+`docker run -d -p8080:8080 -v $PWD:/app ghcr.io/nheimlich/website:v1.0.0`
 
