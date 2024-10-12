@@ -3,12 +3,10 @@ FROM node:22-alpine3.20
 
 ENV VER="v2.0.1"
 
-RUN addgroup -S nhlabs && adduser -S nhlabs -G nhlabs
-
 WORKDIR /app
-USER nhlabs
 
 EXPOSE 8080
 
-ENTRYPOINT [ "npx", "-y", "@11ty/eleventy", "--serve" ]
+USER root
 
+ENTRYPOINT [ "npx", "-y", "@11ty/eleventy", "--serve" ]
