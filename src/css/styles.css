@@ -29,7 +29,7 @@ header {
 
 #projects,
 #tools {
-  flex 1 1 0;
+  flex: 1 1 0;
   list-style-type: "- ";
   margin: 5px;
 }
